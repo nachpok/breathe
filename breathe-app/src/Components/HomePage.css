@@ -1,0 +1,37 @@
+.menu-button-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 50px;
+}
+
+@media (max-width: 600px) {
+  .button-container {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .button-container {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 901px) {
+  .button-container {
+    flex-direction: row;
+  }
+}
+
+.menu-button {
+  height: 150px;
+  width: 150px;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+  border: 1px solid #ddd;
+  margin: 15px;
+}
+
+.logout-button{
+    background-color: darkgray;
+    margin-top: 30px;
+}

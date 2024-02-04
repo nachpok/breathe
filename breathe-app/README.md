@@ -1,0 +1,8 @@
+- Open Turso - in powershell log into `wsl` and then `sudo turso`
+- Setup Turso with [Drizzle](https://orm.drizzle.team/docs/get-started-sqlite#turso)
+- In PowerShell login to Turso, if new DB create with `turso db create NAME-app`
+- View db data with `turso db show Name-app`
+- Copy ID into env local and in Vercel
+- Generate token with `turso db tokens create NAME-app -e none`
+- Copy token into env local and in Vercel
+- View DB in Browser with `npm run studio`, if any issue checkout [docs](https://orm.drizzle.team/drizzle-studio/overview)
