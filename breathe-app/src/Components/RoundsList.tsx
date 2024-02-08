@@ -13,14 +13,6 @@ export const RoundsList: React.FC<RoundsListProps> = ({ rounds }) => {
 
   return (
     <>
-      {/* {rounds.map((round, index) => (
-        <p key={index} className="listElement">
-          Round {index + 1}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {formatRound(round)}
-        </p>
-      ))} */}
-
       <List>
         <VirtualList
           data={rounds}
@@ -36,7 +28,7 @@ export const RoundsList: React.FC<RoundsListProps> = ({ rounds }) => {
                   <div key={index}>
                     <p>
                       Round {index + 1}
-                      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span style={{ paddingLeft: "180px" }}></span>
                       {formatRound(item)}
                     </p>
                   </div>

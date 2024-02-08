@@ -99,8 +99,9 @@
 }
 
 .save-button {
-  max-width: calc(70%, 250px);
-  height: 30px;
+  max-width: calc(140%, 500px);
+  height: 40px;
+  font-size: 24px;
   background-color: black;
   color: white;
   border-radius: 5px;
