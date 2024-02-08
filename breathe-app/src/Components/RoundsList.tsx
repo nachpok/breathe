@@ -9,7 +9,7 @@ export const RoundsList: React.FC<RoundsListProps> = ({ rounds }) => {
   if (rounds.length === 0) {
     return <></>;
   }
-  const ContainerHeight = 200;
+  const ContainerHeight = 180;
 
   return (
     <>
