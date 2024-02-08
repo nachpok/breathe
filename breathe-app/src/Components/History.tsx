@@ -5,7 +5,7 @@ import { useAuth } from "./AuthAndLogin/AuthContext";
 import { Session } from "../drizzle/schema";
 import { readSessions } from "../drizzle";
 import StatsSummary from "./StatsSummary";
-import SessionsList from "./SessionsList";
+import HistorySessionsList from "./HistorySessionsList";
 import "./History.css";
 function History() {
   const { currentUser } = useAuth();
@@ -27,7 +27,7 @@ function History() {
       <ButtonLink to="/" label={<LeftOutlined />} className="backButton" />
       <h1 style={{ textAlign: "center" }}>Results</h1>
       <StatsSummary sessions={sessions} />
-      <SessionsList sessions={sessions} />
+      <HistorySessionsList sessions={sessions} />
     </div>
   );
 }

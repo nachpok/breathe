@@ -1,6 +1,6 @@
-import { FormattedSession } from "./SessionsList";
+import { FormattedSession } from "./HistorySessionsList";
 import { formatTime } from "./StatsSummary";
-import "./ListItem.css";
+import "./HistoryListItem.css";
 export interface ListItemProps {
   session: FormattedSession;
 }

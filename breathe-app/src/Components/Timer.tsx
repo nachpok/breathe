@@ -4,6 +4,7 @@ import { useAuth } from "./AuthAndLogin/AuthContext";
 import { Session } from "../drizzle/schema";
 import { v4 as uuidv4 } from "uuid";
 import "./Timer.css";
+import { RoundsList } from "./RoundsList";
 
 function Timer() {
   const { currentUser } = useAuth();
@@ -110,15 +111,8 @@ function Timer() {
   );
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <h2>Retention timer</h2>{" "}
+    <div className="timer">
+      <h2 className="timer-header">Retention timer</h2>
       {isCountdown ? (
         <div className="timer-hexagon countdown-timer">
           <h3> {formatTimer(countdownMilliseconds)} </h3>
@@ -138,13 +132,8 @@ function Timer() {
           StartStopButtons
         )}
       </div>
-      {rounds.map((round, index) => (
-        <p key={index} className="listElement">
-          Round {index + 1}
-          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-          {formatRound(round)}
-        </p>
-      ))}
+      <RoundsList rounds={rounds} />
+
       {rounds.length ? (
         <button onClick={saveSession} className="save-button">
           Save session
@@ -166,12 +155,4 @@ const formatTimer = (time: number) => {
   return `${minutes.toString().padStart(2, "0")}:${seconds
     .toString()
     .padStart(2, "0")}:${milliseconds.toString().padStart(2, "0")}`;
-};
-const formatRound = (time: number) => {
-  const minutes = Math.floor(time / 60000);
-  const seconds = Math.floor((time % 60000) / 1000);
-
-  return `${minutes.toString().padStart(1, "0")}:${seconds
-    .toString()
-    .padStart(2, "0")}`;
 };

@@ -1,8 +1,8 @@
 import { List } from "antd";
 import VirtualList from "rc-virtual-list";
 import { Session } from "../drizzle/schema";
-import "./SessionList.css";
-import ListItem from "./ListItem";
+import "./HistorySessionList.css";
+import ListItem from "./HistoryListItem";
 export interface SessionsListProps {
   sessions: Session[];
 }
@@ -14,7 +14,7 @@ export interface FormattedSession {
   date: string;
 }
 
-function SessionsList({ sessions }: SessionsListProps) {
+function HistorySessionsList({ sessions }: SessionsListProps) {
   //TODO Adjust height to screen size
   const ContainerHeight = 300;
   const formattedSession = formatSessions(sessions);
@@ -39,7 +39,7 @@ function SessionsList({ sessions }: SessionsListProps) {
   );
 }
 
-export default SessionsList;
+export default HistorySessionsList;
 
 function formatSessions(sessions: Session[]): FormattedSession[] {
   const formattedSessions: FormattedSession[] = [];
