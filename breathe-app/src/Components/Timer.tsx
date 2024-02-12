@@ -14,6 +14,8 @@ function Timer() {
   const [countdownMilliseconds, setCountdownMilliseconds] = useState(0);
   const [rounds, setRounds] = useState<number[]>([]);
   const countRef = useRef<NodeJS.Timeout | null>(null);
+  const gongRef = useRef<NodeJS.Timeout | null>(null);
+  let gongInterval: NodeJS.Timeout | null = null;
 
   const startCountUp = () => {
     if (isCountdown) {
@@ -23,6 +25,7 @@ function Timer() {
       countRef.current = null;
     }
     if (countRef.current !== null) return;
+    playGong();
     countRef.current = setInterval(() => {
       setMilliseconds((timer) => timer + 10);
     }, 10);
@@ -30,6 +33,7 @@ function Timer() {
 
   const startCountdown = () => {
     if (countRef.current !== null) return;
+
     setCountdownMilliseconds(15000);
     setIsCountdown(true);
     countRef.current = setInterval(() => {
@@ -58,6 +62,7 @@ function Timer() {
   };
 
   const recordRound = () => {
+    stopGong();
     if (isCountdown) {
       setCountdownMilliseconds(0);
       setIsCountdown(false);
@@ -84,6 +89,22 @@ function Timer() {
     resetSession();
   };
 
+  const playGong = () => {
+    gongRef.current = setInterval(() => {
+      const audio = new Audio();
+      audio.src = "src/assets/singing-bowl-gong.mp3";
+      audio.play().catch((error) => {
+        console.error("Failed to play audio:", error);
+      });
+    }, 60000);
+
+    return gongInterval;
+  };
+
+  const stopGong = () => {
+    clearInterval(gongRef.current!);
+    gongRef.current = null;
+  };
   useEffect(() => {}, [rounds]);
 
   const StartStopButtons = (
