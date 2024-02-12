@@ -38,6 +38,7 @@ export const insertSession = async (session: schema.Session) => {
     const insertSession = async (session: NewSession) => {
       return db.insert(schema.sessions).values(session);
     };
+
     const res = await insertSession(session);
     if (res.rowsAffected !== 1) {
       throw Error(`drizzle.insertUser.res: ${JSON.stringify(res)}`);

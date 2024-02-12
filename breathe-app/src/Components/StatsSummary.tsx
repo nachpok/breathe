@@ -17,7 +17,9 @@ function StatsSummary({ sessions }: StatsSummaryProps) {
   if (numOfSessions === 0) {
     return <>NO SESSIONS</>;
   }
+
   const summary = extractStatistics(sessions);
+
   return (
     <div className="summary-container">
       <div className="bar-label-container">
@@ -33,38 +35,34 @@ function StatsSummary({ sessions }: StatsSummaryProps) {
         </div>
       </div>
 
-      <tbody>
-        <tr>
-          <th>
-            <span className="summary-value">{summary.numOfSessions}</span>
-          </th>
-          <th>
-            <span className="summary-value">{summary.numOfRounds}</span>
-          </th>
-          <th>
-            {" "}
-            <span className="summary-value">
-              {formatTime(summary.totalRetentionTimeMS)}
-            </span>
-          </th>
-        </tr>
-        <tr>
-          <td>
-            {" "}
-            <span className="summary-label">Breathing sessions</span>
-          </td>
-          <td>
-            <span className="summary-label">
-              Total rounds
-              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            </span>
-          </td>
-          <td>
-            {" "}
-            <span className="summary-label">Total retention time</span>
-          </td>
-        </tr>
-      </tbody>
+      <table>
+        <tbody>
+          <tr>
+            <td>
+              <span className="summary-value">{summary.numOfSessions}</span>
+            </td>
+            <td>
+              <span className="summary-value">{summary.numOfRounds}</span>
+            </td>
+            <td>
+              <span className="summary-value">
+                {formatTime(summary.totalRetentionTimeMS)}
+              </span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <span className="summary-label">Breathing sessions</span>
+            </td>
+            <td>
+              <span className="summary-label">Total rounds</span>
+            </td>
+            <td>
+              <span className="summary-label">Total retention time</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   );
 }

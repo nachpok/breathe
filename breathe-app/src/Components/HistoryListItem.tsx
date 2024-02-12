@@ -8,17 +8,19 @@ function ListItem({ session }: ListItemProps) {
   return (
     <div>
       <table>
-        <tr>
-          <th rowSpan={2}>{formatDate(session.date)}</th>
-          <th>{session.rounds.length}</th>
-          <th>{formatTime(session.avgRound)}</th>
-          <th>{formatTime(session.maxRound)}</th>
-        </tr>
-        <tr>
-          <td>Rounds</td>
-          <td>Average</td>
-          <td>Max</td>
-        </tr>
+        <tbody>
+          <tr>
+            <th rowSpan={2}>{formatDate(session.date)}</th>
+            <th>{session.rounds.length}</th>
+            <th>{formatTime(session.avgRound)}</th>
+            <th>{formatTime(session.maxRound)}</th>
+          </tr>
+          <tr>
+            <td>Rounds</td>
+            <td>Average</td>
+            <td>Max</td>
+          </tr>
+        </tbody>
       </table>
     </div>
   );
