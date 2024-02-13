@@ -25,9 +25,19 @@ function Timer() {
       countRef.current = null;
     }
     if (countRef.current !== null) return;
-    playGong();
+
     countRef.current = setInterval(() => {
-      setMilliseconds((timer) => timer + 10);
+      let gongLogged = false;
+      setMilliseconds((timer) => {
+        if (timer !== 0 && timer % 30000 === 0 && !gongLogged) {
+          console.log("GONG");
+          gongLogged = true;
+          playGong();
+        } else if (timer % 30000 !== 0) {
+          gongLogged = false;
+        }
+        return timer + 10;
+      });
     }, 10);
   };
 
@@ -90,21 +100,22 @@ function Timer() {
   };
 
   const playGong = () => {
-    gongRef.current = setInterval(() => {
-      // const audio = new Audio();
-      // audio.src = "/singing-bowl-gong.mp3";
-      // audio.play().catch((error) => {
-      //   console.error("Failed to play audio:", error);
-      // });
-      const audioElement = document.querySelector("audio");
-      if (audioElement) {
-        audioElement.play().catch((error) => {
-          console.error("Failed to play audio:", error);
-        });
-      }
-    }, 30000);
+    // gongRef.current = setInterval(() => {
+    // const audio = new Audio();
+    // audio.src = "/singing-bowl-gong.mp3";
+    // audio.play().catch((error) => {
+    //   console.error("Failed to play audio:", error);
+    // });
 
-    return gongInterval;
+    // }, 30000);
+
+    // return gongInterval;
+    const audioElement = document.querySelector("audio");
+    if (audioElement) {
+      audioElement.play().catch((error) => {
+        console.error("Failed to play audio:", error);
+      });
+    }
   };
 
   const stopGong = () => {
