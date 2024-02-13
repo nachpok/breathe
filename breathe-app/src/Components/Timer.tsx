@@ -133,6 +133,7 @@ function Timer() {
 
   return (
     <div className="timer">
+      <audio src="src/assets/singing-bowl-gong.mp3" autoPlay={true}></audio>
       <h2 className="timer-header">Retention timer</h2>
       {isCountdown ? (
         <div className="timer-hexagon countdown-timer">
@@ -154,7 +155,6 @@ function Timer() {
         )}
       </div>
       <RoundsList rounds={rounds} />
-
       {rounds.length ? (
         <button onClick={saveSession} className="save-button">
           Save session
