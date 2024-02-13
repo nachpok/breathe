@@ -96,7 +96,7 @@ function Timer() {
       audio.play().catch((error) => {
         console.error("Failed to play audio:", error);
       });
-    }, 3000);
+    }, 30000);
 
     return gongInterval;
   };
@@ -134,7 +134,7 @@ function Timer() {
 
   return (
     <div className="timer">
-      <audio src="/singing-bowl-gong.mp3" autoPlay={true}></audio>
+      {/* <audio src="/singing-bowl-gong.mp3" autoPlay={true}></audio> */}
       <h2 className="timer-header">Retention timer</h2>
       {isCountdown ? (
         <div className="timer-hexagon countdown-timer">
