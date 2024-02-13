@@ -15,7 +15,6 @@ function Timer() {
   const [rounds, setRounds] = useState<number[]>([]);
   const countRef = useRef<NodeJS.Timeout | null>(null);
   const gongRef = useRef<NodeJS.Timeout | null>(null);
-  // let gongInterval: NodeJS.Timeout | null = null;
 
   const startCountUp = () => {
     if (isCountdown) {
@@ -29,11 +28,11 @@ function Timer() {
     countRef.current = setInterval(() => {
       let gongLogged = false;
       setMilliseconds((timer) => {
-        if (timer !== 0 && timer % 30000 === 0 && !gongLogged) {
+        if (timer !== 0 && timer % 60000 === 0 && !gongLogged) {
           console.log("GONG");
           gongLogged = true;
           playGong();
-        } else if (timer % 30000 !== 0) {
+        } else if (timer % 60000 !== 0) {
           gongLogged = false;
         }
         return timer + 10;
@@ -100,16 +99,6 @@ function Timer() {
   };
 
   const playGong = () => {
-    // gongRef.current = setInterval(() => {
-    // const audio = new Audio();
-    // audio.src = "/singing-bowl-gong.mp3";
-    // audio.play().catch((error) => {
-    //   console.error("Failed to play audio:", error);
-    // });
-
-    // }, 30000);
-
-    // return gongInterval;
     const audioElement = document.querySelector("audio");
     if (audioElement) {
       audioElement.play().catch((error) => {
@@ -151,7 +140,7 @@ function Timer() {
 
   return (
     <div className="timer">
-      <audio src="/singing-bowl-gong.mp3" autoPlay={false}></audio>
+      <audio src="/singing-bowl-gong.mp3"></audio>
       <h2 className="timer-header">Retention timer</h2>
       {isCountdown ? (
         <div className="timer-hexagon countdown-timer">
