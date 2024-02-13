@@ -14,7 +14,6 @@ function Timer() {
   const [countdownMilliseconds, setCountdownMilliseconds] = useState(0);
   const [rounds, setRounds] = useState<number[]>([]);
   const countRef = useRef<NodeJS.Timeout | null>(null);
-  const gongRef = useRef<NodeJS.Timeout | null>(null);
 
   const startCountUp = () => {
     if (isCountdown) {
@@ -26,10 +25,9 @@ function Timer() {
     if (countRef.current !== null) return;
 
     countRef.current = setInterval(() => {
-      let gongLogged = false;
+      let gongLogged = false; //flag to avoid calling playGong() twice each round
       setMilliseconds((timer) => {
         if (timer !== 0 && timer % 60000 === 0 && !gongLogged) {
-          console.log("GONG");
           gongLogged = true;
           playGong();
         } else if (timer % 60000 !== 0) {
@@ -71,7 +69,6 @@ function Timer() {
   };
 
   const recordRound = () => {
-    stopGong();
     if (isCountdown) {
       setCountdownMilliseconds(0);
       setIsCountdown(false);
@@ -107,10 +104,6 @@ function Timer() {
     }
   };
 
-  const stopGong = () => {
-    clearInterval(gongRef.current!);
-    gongRef.current = null;
-  };
   useEffect(() => {}, [rounds]);
 
   const StartStopButtons = (
@@ -136,7 +129,6 @@ function Timer() {
       </button>
     </div>
   );
-  //test
 
   return (
     <div className="timer">
