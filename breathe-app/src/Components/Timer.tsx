@@ -91,11 +91,17 @@ function Timer() {
 
   const playGong = () => {
     gongRef.current = setInterval(() => {
-      const audio = new Audio();
-      audio.src = "/singing-bowl-gong.mp3";
-      audio.play().catch((error) => {
-        console.error("Failed to play audio:", error);
-      });
+      // const audio = new Audio();
+      // audio.src = "/singing-bowl-gong.mp3";
+      // audio.play().catch((error) => {
+      //   console.error("Failed to play audio:", error);
+      // });
+      const audioElement = document.querySelector("audio");
+      if (audioElement) {
+        audioElement.play().catch((error) => {
+          console.error("Failed to play audio:", error);
+        });
+      }
     }, 30000);
 
     return gongInterval;
@@ -134,7 +140,7 @@ function Timer() {
 
   return (
     <div className="timer">
-      {/* <audio src="/singing-bowl-gong.mp3" autoPlay={true}></audio> */}
+      <audio src="/singing-bowl-gong.mp3" autoPlay={false}></audio>
       <h2 className="timer-header">Retention timer</h2>
       {isCountdown ? (
         <div className="timer-hexagon countdown-timer">
