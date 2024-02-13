@@ -92,7 +92,7 @@ function Timer() {
   const playGong = () => {
     gongRef.current = setInterval(() => {
       const audio = new Audio();
-      audio.src = "src/assets/singing-bowl-gong.mp3";
+      audio.src = "/singing-bowl-gong.mp3";
       audio.play().catch((error) => {
         console.error("Failed to play audio:", error);
       });
