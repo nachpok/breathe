@@ -1,4 +1,4 @@
-import { eq } from "drizzle-orm";
+import { eq, desc } from "drizzle-orm";
 // import { drizzle } from "drizzle-orm/..."; // import the correct drizzle based on your database driver
 import * as schema from "./schema";
 import { drizzle } from "drizzle-orm/libsql";
@@ -53,6 +53,7 @@ export const readSessions = async (userId: string) => {
     const readSessions = async (userId: string) => {
       return db.query.sessions.findMany({
         where: eq(schema.sessions.userId, userId),
+        orderBy: [desc(schema.sessions.createdAt)],
       });
     };
     const res = await readSessions(userId);
