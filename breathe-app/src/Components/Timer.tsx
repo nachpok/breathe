@@ -15,7 +15,7 @@ function Timer() {
   const [rounds, setRounds] = useState<number[]>([]);
   const countRef = useRef<NodeJS.Timeout | null>(null);
   const gongRef = useRef<NodeJS.Timeout | null>(null);
-  let gongInterval: NodeJS.Timeout | null = null;
+  // let gongInterval: NodeJS.Timeout | null = null;
 
   const startCountUp = () => {
     if (isCountdown) {
