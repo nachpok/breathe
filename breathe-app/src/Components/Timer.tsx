@@ -96,7 +96,7 @@ function Timer() {
       audio.play().catch((error) => {
         console.error("Failed to play audio:", error);
       });
-    }, 60000);
+    }, 3000);
 
     return gongInterval;
   };
