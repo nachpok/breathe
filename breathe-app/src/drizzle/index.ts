@@ -35,6 +35,7 @@ export const userById = async (userId: string) => {
 export const insertSession = async (session: schema.Session) => {
   // console.log("drizzle.index.insetSession");
   try {
+    // session.rounds = [70350, 85520, 75430];
     const insertSession = async (session: NewSession) => {
       return db.insert(schema.sessions).values(session);
     };

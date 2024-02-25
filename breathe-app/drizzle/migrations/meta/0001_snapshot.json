@@ -1,9 +1,61 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "d10b0ccb-7425-4811-a59b-bd63a672a7a4",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "7d83d89b-a7ed-4f27-86ff-fc5d693e552e",
+  "prevId": "ca04d8bd-5c7b-42d6-833e-53b348de92c1",
   "tables": {
+    "meditations": {
+      "name": "meditations",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "text",
+          "primaryKey": true,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        },
+        "timestamp": {
+          "name": "timestamp",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false,
+          "default": "CURRENT_TIMESTAMP"
+        },
+        "milliseconds": {
+          "name": "milliseconds",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true,
+          "autoincrement": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "meditations_user_id_users_id_fk": {
+          "name": "meditations_user_id_users_id_fk",
+          "tableFrom": "meditations",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
     "sessions": {
       "name": "sessions",
       "columns": {
@@ -83,6 +135,13 @@
         },
         "sessions": {
           "name": "sessions",
+          "type": "blob",
+          "primaryKey": false,
+          "notNull": false,
+          "autoincrement": false
+        },
+        "meditations": {
+          "name": "meditations",
           "type": "blob",
           "primaryKey": false,
           "notNull": false,

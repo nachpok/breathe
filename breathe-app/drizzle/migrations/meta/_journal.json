@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1708860604664,
+      "tag": "0000_rich_punisher",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1708863194661,
+      "tag": "0001_strange_kat_farrell",
+      "breakpoints": true
+    }
+  ]
+}

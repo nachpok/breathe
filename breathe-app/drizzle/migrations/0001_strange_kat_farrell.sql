@@ -1,0 +1,1 @@
+ALTER TABLE users ADD `meditations` blob;
