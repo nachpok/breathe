@@ -48,7 +48,7 @@ function History() {
   return (
     <div className="app">
       <ButtonLink to="/" label={<LeftOutlined />} className="backButton" />
-      <h1 style={{ textAlign: "center" }}>Results</h1>
+      <h1 className="historyTitle">Results</h1>
       <StatsSummary sessions={sessions} />
       <HistorySessionsList sessions={sessions} removeSession={removeSession} />
     </div>

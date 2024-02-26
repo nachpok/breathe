@@ -25,7 +25,7 @@ function ListItem({ session, removeSession }: ListItemProps) {
   };
   return (
     <div>
-      <table>
+      <table style={{ padding: " 0 10px" }}>
         <tbody>
           <tr>
             <th rowSpan={2}>{formatDate(session.date)}</th>
