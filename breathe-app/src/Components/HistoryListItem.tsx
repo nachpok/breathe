@@ -1,6 +1,8 @@
 import { FormattedSession } from "./HistorySessionsList";
 import { formatTime } from "./StatsSummary";
 import "./HistoryListItem.css";
+import { deleteSession } from "../drizzle";
+import { DeleteOutlined } from "@ant-design/icons";
 export interface ListItemProps {
   session: FormattedSession;
 }
@@ -14,6 +16,9 @@ function ListItem({ session }: ListItemProps) {
             <th>{session.rounds.length}</th>
             <th>{formatTime(session.avgRound)}</th>
             <th>{formatTime(session.maxRound)}</th>
+            <th>
+              <DeleteOutlined onClick={() => deleteSession(session.id)} />
+            </th>
           </tr>
           <tr>
             <td>Rounds</td>

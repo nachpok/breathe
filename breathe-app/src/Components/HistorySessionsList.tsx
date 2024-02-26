@@ -1,6 +1,6 @@
 import { List } from "antd";
 import VirtualList from "rc-virtual-list";
-import { Session } from "../drizzle/schema";
+import { Session } from "../../drizzle/migrations/schema";
 import "./HistorySessionList.css";
 import ListItem from "./HistoryListItem";
 export interface SessionsListProps {
@@ -58,7 +58,7 @@ function formatSessions(sessions: Session[]): FormattedSession[] {
         rounds: rounds,
         avgRound: totalRetentionTimeMS / rounds.length,
         maxRound: maxRound,
-        date: s.createdAt,
+        date: s.timestamp,
       };
 
       formattedSessions.push(formattedSession);

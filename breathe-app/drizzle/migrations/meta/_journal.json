@@ -15,6 +15,20 @@
       "when": 1708863194661,
       "tag": "0001_strange_kat_farrell",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1708954883267,
+      "tag": "0002_redundant_payback",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1708954911845,
+      "tag": "0003_quiet_valeria_richards",
+      "breakpoints": true
     }
   ]
 }

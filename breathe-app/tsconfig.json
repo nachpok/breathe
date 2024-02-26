@@ -20,6 +20,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/drizzle/schema.ts"],
+  "include": ["src", "src/drizzle/schema.ts","node_modules/@libsql/client"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

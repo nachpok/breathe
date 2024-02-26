@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
-import { insertSession } from "../drizzle";
+import { insertSession, test } from "../drizzle";
 import { useAuth } from "./AuthAndLogin/AuthContext";
-import { Session } from "../drizzle/schema";
+import { Session } from "../../drizzle/migrations/schema";
 import { v4 as uuidv4 } from "uuid";
 import "./Timer.css";
 import { RoundsList } from "./RoundsList";
@@ -87,11 +87,11 @@ function Timer() {
     const session: Session = {
       id: `BS-${uuidv4()}`,
       userId: `BU-${currentUser.uid}`,
-      createdAt: Date.now().toString(),
-      breathes: 0,
+      timestamp: Date.now().toString(),
       rounds: rounds,
     };
-    insertSession(session);
+    test();
+    // insertSession(session);
     resetSession();
   };
 

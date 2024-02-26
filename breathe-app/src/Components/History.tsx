@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 import { ButtonLink } from "./HomePage";
 import { LeftOutlined } from "@ant-design/icons";
 import { useAuth } from "./AuthAndLogin/AuthContext";
-import { Session } from "../drizzle/schema";
-import { readSessions } from "../drizzle";
+import { Session } from "../../drizzle/migrations/schema";
 import StatsSummary from "./StatsSummary";
 import HistorySessionsList from "./HistorySessionsList";
 import "./History.css";
 import { Spin } from "antd";
+import { readSessions } from "../drizzle";
+import LoadingPage from "./LoadingPage";
 function History() {
   const { currentUser } = useAuth();
   const [sessions, setSessions] = useState<Session[]>([]);
@@ -27,7 +28,7 @@ function History() {
   }, []);
 
   if (loading) {
-    return <Spin size="large" style={{ marginTop: "300px" }} />;
+    return <LoadingPage />;
   }
   return (
     <div className="app">

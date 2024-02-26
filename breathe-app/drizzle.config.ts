@@ -3,7 +3,7 @@ import * as dotenv from "dotenv";
 dotenv.config();
 //TODO move to env
 export default {
-  schema: "./src/drizzle/schema.ts",
+  schema: "./drizzle/migrations/schema.ts",
   out: "./drizzle/migrations",
   driver: "turso",
   dbCredentials: {
