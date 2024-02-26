@@ -1,38 +1,24 @@
 import { List } from "antd";
 import VirtualList from "rc-virtual-list";
-import { Session } from "../../drizzle/migrations/schema";
 import "./HistorySessionList.css";
 import ListItem from "./HistoryListItem";
-import { useEffect, useState } from "react";
-import { deleteSession } from "../drizzle";
+
+import { FormattedSession } from "./History";
 export interface SessionsListProps {
-  sessions: Session[];
-}
-export interface FormattedSession {
-  id: string;
-  rounds: number[];
-  avgRound: number;
-  maxRound: number;
-  date: string;
+  sessions: FormattedSession[];
+  removeSession: (sessionId: string) => void;
 }
 
-function HistorySessionsList({ sessions }: SessionsListProps) {
+function HistorySessionsList({ sessions, removeSession }: SessionsListProps) {
   //TODO Adjust height to screen size
   const ContainerHeight = 300;
-  const formattedSession = formatSessions(sessions);
-  const [sessionList, setSessionList] =
-    useState<FormattedSession[]>(formattedSession);
   //Todo removed session animation
-  const removeSession = (sessionId: string) => {
-    const newSessionList = sessionList.filter((s) => s.id !== sessionId);
-    deleteSession(sessionId);
-    setSessionList(newSessionList);
-  };
-  useEffect(() => {}, [sessionList]);
+
+  // useEffect(() => {}, [sessions]);
   return (
     <List className="list-container">
       <VirtualList
-        data={sessionList}
+        data={sessions}
         height={ContainerHeight}
         itemHeight={47}
         itemKey="id"
@@ -53,29 +39,29 @@ function HistorySessionsList({ sessions }: SessionsListProps) {
 
 export default HistorySessionsList;
 
-function formatSessions(sessions: Session[]): FormattedSession[] {
-  const formattedSessions: FormattedSession[] = [];
-  sessions.forEach((s) => {
-    if (s.rounds) {
-      const roundsString = s.rounds.toString().split(",");
-      const rounds = roundsString.map(Number);
-      const maxRound = Math.max(...rounds);
-      const totalRetentionTimeMS = rounds.reduce(
-        (accumulator, currentValue) => accumulator + currentValue,
-        0
-      );
+// function formatSessions(sessions: Session[]): FormattedSession[] {
+//   const formattedSessions: FormattedSession[] = [];
+//   sessions.forEach((s) => {
+//     if (s.rounds) {
+//       const roundsString = s.rounds.toString().split(",");
+//       const rounds = roundsString.map(Number);
+//       const maxRound = Math.max(...rounds);
+//       const totalRetentionTimeMS = rounds.reduce(
+//         (accumulator, currentValue) => accumulator + currentValue,
+//         0
+//       );
 
-      const formattedSession: FormattedSession = {
-        id: s.id,
-        rounds: rounds,
-        avgRound: totalRetentionTimeMS / rounds.length,
-        maxRound: maxRound,
-        date: s.timestamp,
-      };
+//       const formattedSession: FormattedSession = {
+//         id: s.id,
+//         rounds: rounds,
+//         avgRound: totalRetentionTimeMS / rounds.length,
+//         maxRound: maxRound,
+//         date: s.timestamp,
+//       };
 
-      formattedSessions.push(formattedSession);
-    }
-  });
+//       formattedSessions.push(formattedSession);
+//     }
+//   });
 
-  return formattedSessions;
-}
+//   return formattedSessions;
+// }

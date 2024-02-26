@@ -8,20 +8,19 @@ const client = createClient({
   authToken: import.meta.env.VITE_DATABASE_AUTH_TOKEN,
 });
 const db = drizzle(client, { schema });
-export const test = async () => {
+export const addMockSession = async () => {
   try {
     await db.insert(schema.sessions).values({
-      id: "BS-64be04c8-245e-4aa9-a8fc-ddf14e1b3b0c",
+      id: "BS-c45482d0-99f9-4ae3-821c-32c7876bbb49",
       userId: "BU-uQgkMd8Q6yRWWEk1zgwCDk9uNcm1",
-      timestamp: "1707997483701",
-      rounds: [70350, 85520, 75430],
+      timestamp: "1707653374244",
+      rounds: [75000, 90000, 100000],
     });
   } catch (error) {
     console.error("error: ", error);
   }
 };
-// const sqlite = new Database("sqlite.db");
-// const db = drizzle(sqlite, { schema });
+
 type NewUser = typeof schema.users.$inferInsert;
 type NewSession = typeof schema.sessions.$inferInsert;
 export const userById = async (userId: string) => {
@@ -49,7 +48,6 @@ export const userById = async (userId: string) => {
   }
 };
 export const insertSession = async (session: schema.Session) => {
-  // console.log("drizzle.index.insetSession");
   try {
     const insertSession = async (session: NewSession) => {
       return db.insert(schema.sessions).values(session);
@@ -73,7 +71,6 @@ export const readSessions = async (userId: string) => {
       });
     };
     const res = await readSessions(userId);
-    console.log("drizzle.index.readSessions.res: ", res);
     return res;
   } catch (e) {
     console.error("drizzle.index.readSessions.e: ", e);

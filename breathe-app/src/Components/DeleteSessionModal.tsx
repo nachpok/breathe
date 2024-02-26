@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Button, Modal } from "antd";
+import { Modal } from "antd";
 
 export interface DeleteSessionModalProps {
   isModalOpen: boolean;

@@ -1,7 +1,7 @@
-import { Session } from "../../drizzle/migrations/schema";
+import { FormattedSession } from "./History";
 import "./StatsSummary.css";
 export interface StatsSummaryProps {
-  sessions: Session[];
+  sessions: FormattedSession[];
 }
 
 interface SessionsSummary {
@@ -70,7 +70,7 @@ function StatsSummary({ sessions }: StatsSummaryProps) {
 
 export default StatsSummary;
 
-function extractStatistics(sessions: Session[]): SessionsSummary {
+function extractStatistics(sessions: FormattedSession[]): SessionsSummary {
   const numOfSessions = sessions.length;
   let roundsString: string[] = [];
   sessions.forEach((s) => {

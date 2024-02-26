@@ -1,9 +1,9 @@
-import { FormattedSession } from "./HistorySessionsList";
 import { formatTime } from "./StatsSummary";
 import "./HistoryListItem.css";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import DeleteSessionModal from "./DeleteSessionModal";
+import { FormattedSession } from "./History";
 export interface ListItemProps {
   session: FormattedSession;
   removeSession: (id: string) => void;
