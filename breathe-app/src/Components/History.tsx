@@ -18,6 +18,7 @@ function History() {
   useEffect(() => {
     const fetchSessions = async () => {
       const res = await getSession();
+      console.log("History.getSessions.res", res);
       if (res?.length) {
         const sessions = res as Session[];
         setSessions(sessions);

@@ -3,6 +3,8 @@ import VirtualList from "rc-virtual-list";
 import { Session } from "../../drizzle/migrations/schema";
 import "./HistorySessionList.css";
 import ListItem from "./HistoryListItem";
+import { useEffect, useState } from "react";
+import { deleteSession } from "../drizzle";
 export interface SessionsListProps {
   sessions: Session[];
 }
@@ -18,19 +20,29 @@ function HistorySessionsList({ sessions }: SessionsListProps) {
   //TODO Adjust height to screen size
   const ContainerHeight = 300;
   const formattedSession = formatSessions(sessions);
-
+  const [sessionList, setSessionList] =
+    useState<FormattedSession[]>(formattedSession);
+  //Todo removed session animation
+  const removeSession = (sessionId: string) => {
+    const newSessionList = sessionList.filter((s) => s.id !== sessionId);
+    deleteSession(sessionId);
+    setSessionList(newSessionList);
+  };
+  useEffect(() => {}, [sessionList]);
   return (
     <List className="list-container">
       <VirtualList
-        data={formattedSession}
+        data={sessionList}
         height={ContainerHeight}
         itemHeight={47}
         itemKey="id"
       >
-        {(formattedSession: FormattedSession, index: number) => (
+        {(sessionList: FormattedSession, index: number) => (
           <List.Item key={index}>
             <List.Item.Meta
-              description={<ListItem session={formattedSession} />}
+              description={
+                <ListItem session={sessionList} removeSession={removeSession} />
+              }
             />
           </List.Item>
         )}

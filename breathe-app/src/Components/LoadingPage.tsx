@@ -3,6 +3,7 @@ import { ButtonLink } from "./HomePage";
 import { LeftOutlined } from "@ant-design/icons";
 
 function LoadingPage() {
+  //Todo notify when there are no sessions
   return (
     <div
       style={{

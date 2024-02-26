@@ -12,6 +12,7 @@ interface SessionsSummary {
   avgRetentionMS: number;
 }
 //TODO avoid / by 0, show no stats
+//TODO recalculate summary when session is deleted
 function StatsSummary({ sessions }: StatsSummaryProps) {
   const numOfSessions = sessions.length;
   if (numOfSessions === 0) {

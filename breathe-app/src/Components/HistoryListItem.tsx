@@ -1,12 +1,28 @@
 import { FormattedSession } from "./HistorySessionsList";
 import { formatTime } from "./StatsSummary";
 import "./HistoryListItem.css";
-import { deleteSession } from "../drizzle";
 import { DeleteOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import DeleteSessionModal from "./DeleteSessionModal";
 export interface ListItemProps {
   session: FormattedSession;
+  removeSession: (id: string) => void;
 }
-function ListItem({ session }: ListItemProps) {
+function ListItem({ session, removeSession }: ListItemProps) {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleRemove = () => {
+    removeSession(session.id);
+    setIsModalOpen(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div>
       <table>
@@ -17,7 +33,13 @@ function ListItem({ session }: ListItemProps) {
             <th>{formatTime(session.avgRound)}</th>
             <th>{formatTime(session.maxRound)}</th>
             <th>
-              <DeleteOutlined onClick={() => deleteSession(session.id)} />
+              <DeleteOutlined onClick={() => showModal()} />
+              <DeleteSessionModal
+                isModalOpen={isModalOpen}
+                handleOk={handleRemove}
+                handleCancel={handleCancel}
+                removeSession={removeSession}
+              />
             </th>
           </tr>
           <tr>
