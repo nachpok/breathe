@@ -6,7 +6,6 @@ import { Session } from "../../drizzle/migrations/schema";
 import StatsSummary from "./StatsSummary";
 import HistorySessionsList from "./HistorySessionsList";
 import "./History.css";
-import { Spin } from "antd";
 import { readSessions } from "../drizzle";
 import LoadingPage from "./LoadingPage";
 function History() {
@@ -20,7 +19,8 @@ function History() {
     const fetchSessions = async () => {
       const res = await getSession();
       if (res?.length) {
-        setSessions(res);
+        const sessions = res as Session[];
+        setSessions(sessions);
         setLoading(false); // Set loading to false when data is fetched
       }
     };

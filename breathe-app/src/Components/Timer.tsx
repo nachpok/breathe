@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { insertSession, test } from "../drizzle";
+import { insertSession } from "../drizzle";
 import { useAuth } from "./AuthAndLogin/AuthContext";
 import { Session } from "../../drizzle/migrations/schema";
 import { v4 as uuidv4 } from "uuid";
@@ -8,7 +8,6 @@ import { RoundsList } from "./RoundsList";
 
 function Timer() {
   const { currentUser } = useAuth();
-  // const [breathes, setBreathes] = useState(0);
   const [milliseconds, setMilliseconds] = useState(0);
   const [isCountdown, setIsCountdown] = useState(false);
   const [countdownMilliseconds, setCountdownMilliseconds] = useState(0);
@@ -82,7 +81,6 @@ function Timer() {
       startCountdown();
     }
   };
-  //TODO set breathes option
   const saveSession = () => {
     const session: Session = {
       id: `BS-${uuidv4()}`,
@@ -90,8 +88,7 @@ function Timer() {
       timestamp: Date.now().toString(),
       rounds: rounds,
     };
-    test();
-    // insertSession(session);
+    insertSession(session);
     resetSession();
   };
 

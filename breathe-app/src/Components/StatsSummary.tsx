@@ -1,4 +1,4 @@
-import { Session } from "../drizzle/schema";
+import { Session } from "../../drizzle/migrations/schema";
 import "./StatsSummary.css";
 export interface StatsSummaryProps {
   sessions: Session[];

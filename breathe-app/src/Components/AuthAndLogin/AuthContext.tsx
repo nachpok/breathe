@@ -3,7 +3,7 @@ import { User, UserCredential } from "firebase/auth";
 import Firebase from "../../Firebase";
 import { useNavigate } from "react-router-dom";
 import { userById } from "../../drizzle/index";
-import { Session } from "../../drizzle/schema";
+import { Session } from "../../../drizzle/migrations/schema";
 //Todo set user as type of AuthContext
 // interface AuthContextType {}
 
@@ -56,7 +56,7 @@ export function AuthProvider({ firebase, children }: AuthProviderProps) {
     `BU-${res.user.uid}`;
     const user = await userById(`BU-${res.user.uid}`);
     if (user?.sessions) {
-      setUserSessions(user.sessions);
+      setUserSessions(user.sessions as Session[]);
     }
 
     navigate(`/`);
