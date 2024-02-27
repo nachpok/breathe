@@ -49,7 +49,6 @@ function History() {
     const fetchHistory = async () => {
       const sessions = (await getSession()) as Session[];
       const meditations = (await getMeditations()) as Meditation[];
-      console.log("meditations: ", meditations);
       const formattedSessions = formatSessions(sessions);
       setSessions(formattedSessions);
       setMeditations(meditations);
