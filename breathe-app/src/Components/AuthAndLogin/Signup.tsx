@@ -30,8 +30,8 @@ function Signup() {
       passwordRef.current?.input?.value !==
       passwordConfRef.current?.input?.value
     ) {
-      console.log(`${passwordRef.current?.input?.value} !==
-      ${passwordConfRef.current?.input?.value}`);
+      // console.log(`${passwordRef.current?.input?.value} !==
+      // ${passwordConfRef.current?.input?.value}`);
       return setError(Error.passwordsDontMatch);
     }
     try {
@@ -47,9 +47,9 @@ function Signup() {
         if (e.code === "auth/weak-password") {
           setError(Error.passwordToShort);
         }
-        console.log(`Firebase Error: ${e.code}`);
+        console.error(`Firebase Error: ${e.code}`);
       } else {
-        console.log(`Other Error: ${e}`);
+        console.error(`Other Error: ${e}`);
       }
     }
     setLoading(false);
@@ -58,7 +58,7 @@ function Signup() {
     try {
       await googleLogin();
     } catch (error) {
-      console.log(`Signup.googleSignIn.error: ${error}`);
+      console.error(`Signup.googleSignIn.error: ${error}`);
     }
   };
   return (

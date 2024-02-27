@@ -20,7 +20,7 @@ function ResetPassword() {
     } catch (e) {
       setMessage("Failed to reset password");
       setMessageType("error");
-      console.log(`Failed to reset password: ${e}`);
+      console.error(`Failed to reset password: ${e}`);
     }
     setLoading(false);
   };

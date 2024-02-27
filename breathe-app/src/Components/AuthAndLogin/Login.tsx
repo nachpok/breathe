@@ -34,10 +34,10 @@ export default function Login() {
         ) {
           setError(Error.wrongPassword);
         }
-        console.log(`Firebase Error: ${e.code}`);
+        console.error(`Firebase Error: ${e.code}`);
       } else {
         setError(Error.default);
-        console.log(`Other Error: ${e}`);
+        console.error(`Other Error: ${e}`);
       }
     }
     setLoading(false);
@@ -47,14 +47,14 @@ export default function Login() {
     try {
       await googleLogin();
     } catch (error) {
-      console.log(`Signup.googleSignIn.error: ${error}`);
+      console.error(`Signup.googleSignIn.error: ${error}`);
     }
   };
   const githubSignIn = async () => {
     try {
       await githubLogin();
     } catch (error) {
-      console.log(`Signup.googleSignIn.error: ${error}`);
+      console.error(`Signup.googleSignIn.error: ${error}`);
     }
   };
   return (

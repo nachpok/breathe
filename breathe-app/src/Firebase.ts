@@ -59,9 +59,6 @@ export default class Firebase {
   }
 
   async signUpWithEmail(email: string, password: string): Promise<void> {
-    console.log(
-      `Firebase.signUpWithEmail(email: ${email}, password: ${password})`
-    );
     try {
       await createUserWithEmailAndPassword(this.auth, email, password);
     } catch (error: any) {

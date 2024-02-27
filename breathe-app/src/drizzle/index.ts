@@ -62,7 +62,6 @@ export const insertSession = async (session: schema.Session) => {
   }
 };
 export const readSessions = async (userId: string) => {
-  // console.log("drizzle.idex.readSessions.userId: ", userId);
   try {
     const readSessions = async (userId: string) => {
       return db.query.sessions.findMany({

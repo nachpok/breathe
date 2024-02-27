@@ -63,7 +63,6 @@ function MeditationTimer() {
       timestamp: Date.now().toString(),
       milliseconds: targetTime - milliseconds,
     };
-    console.log("meditation: ", meditation);
     insertMeditation(meditation);
     resetMeditation();
   };
