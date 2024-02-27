@@ -9,10 +9,10 @@ export interface Session {
   timestamp: string;
   rounds: number[] | null;
 }
-export interface Meditations {
+export interface Meditation {
   id: string;
   userId: string;
-  createdAt: string;
+  timestamp: string;
   milliseconds: number;
 }
 

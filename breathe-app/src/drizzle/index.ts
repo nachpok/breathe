@@ -92,3 +92,17 @@ export const deleteSession = async (sessionId: string) => {
     console.error("drizzle.deleteSession.e: ", error);
   }
 };
+
+export const insertMeditation = async (meditation: schema.Meditation) => {
+  try {
+    const insertMeditation = async (meditation: schema.Meditation) => {
+      return db.insert(schema.meditations).values(meditation);
+    };
+    const res = await insertMeditation(meditation);
+    if (res.rowsAffected !== 1) {
+      throw Error(`drizzle.insertMeditation.res: ${JSON.stringify(res)}`);
+    }
+  } catch (error) {
+    console.error("drizzle.insertMeditation.e: ", error);
+  }
+};

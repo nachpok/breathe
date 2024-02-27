@@ -24,14 +24,13 @@ const HomePage: React.FC = () => {
       <div className="menu-button-container">
         <ButtonLink
           className="menu-button"
-          to="/guided"
-          label="Guided breathing"
-          disabled={true}
+          to="/meditation"
+          label="Meditation"
         />
         <ButtonLink
           className="menu-button"
           to="/retention"
-          label="Retention timer"
+          label="Retention Timer"
         />
         <ButtonLink className="menu-button" to="/history" label="History" />
       </div>

@@ -6,11 +6,11 @@ import { AuthProvider } from "./Components/AuthAndLogin/AuthContext";
 import Signup from "./Components/AuthAndLogin/Signup";
 import ResetPassword from "./ResetPassword";
 import { PrivateRoutes } from "./Components/AuthAndLogin/PrivateRoutes";
-import Test from "./Components/Test";
 import Login from "./Components/AuthAndLogin/Login";
 import HomePage from "./Components/HomePage";
 import RetentionTimer from "./Components/RetentionTimer";
 import History from "./Components/History";
+import MeditationTimer from "./Components/MeditationTimer";
 
 function App() {
   const [firebase, setFirebase] = useState<Firebase | null>(null);
@@ -36,9 +36,8 @@ function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/retention" element={<RetentionTimer />} />
             <Route path="/history" element={<History />} />
-            {/* <Route path="/guided" element={< />} /> */}
-
-            <Route path="test" element={<Test />} />
+            <Route path="/meditation" element={<MeditationTimer />} />
+            {/* <Route path="/guided" element={<GuidedMeditation />} /> */}
           </Route>
           <Route path="*" element={<HomePage />} />
         </Routes>
