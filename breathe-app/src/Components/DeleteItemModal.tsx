@@ -1,22 +1,25 @@
 import { Modal } from "antd";
 
-export interface DeleteSessionModalProps {
+export interface DeleteItemModalProps {
+  itemType: string;
   isModalOpen: boolean;
   handleOk: () => void;
   handleCancel: () => void;
-  removeSession: (id: string) => void;
+  removeItem: (id: string) => void;
 }
 
-function DeleteSessionModal({
+function DeleteItemModal({
+  itemType,
   isModalOpen,
   handleOk: handleRemove,
   handleCancel,
-}: DeleteSessionModalProps) {
+}: DeleteItemModalProps) {
+  const title = "Remove " + itemType;
   return (
     <>
       <Modal
         wrapClassName="centered-modal"
-        title="Remove Session"
+        title={title}
         open={isModalOpen}
         onOk={handleRemove}
         onCancel={handleCancel}
@@ -32,4 +35,4 @@ function DeleteSessionModal({
   );
 }
 
-export default DeleteSessionModal;
+export default DeleteItemModal;

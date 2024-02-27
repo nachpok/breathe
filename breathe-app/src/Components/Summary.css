@@ -18,6 +18,7 @@
 .summary-label {
   font-size: 16px;
   color: #666;
+  width: 90%;
 }
 
 .summary-value {

@@ -1,14 +1,13 @@
-import { formatTime } from "./StatsSummary";
-import "./HistoryListItem.css";
+import { formatTime } from "./SessionsSummary";
 import { DeleteOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import DeleteSessionModal from "./DeleteSessionModal";
+import DeleteItemModal from "./DeleteItemModal";
 import { FormattedSession } from "./History";
 export interface ListItemProps {
   session: FormattedSession;
   removeSession: (id: string) => void;
 }
-function ListItem({ session, removeSession }: ListItemProps) {
+function SessionListItem({ session, removeSession }: ListItemProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const showModal = () => {
@@ -34,11 +33,12 @@ function ListItem({ session, removeSession }: ListItemProps) {
             <th>{formatTime(session.maxRound)}</th>
             <th>
               <DeleteOutlined onClick={() => showModal()} />
-              <DeleteSessionModal
+              <DeleteItemModal
+                itemType="Session"
                 isModalOpen={isModalOpen}
                 handleOk={handleRemove}
                 handleCancel={handleCancel}
-                removeSession={removeSession}
+                removeItem={removeSession}
               />
             </th>
           </tr>
@@ -53,7 +53,7 @@ function ListItem({ session, removeSession }: ListItemProps) {
   );
 }
 
-export default ListItem;
+export default SessionListItem;
 
 export function formatDate(dateString: string) {
   const date = new Date(Number(dateString));

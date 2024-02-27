@@ -1,7 +1,6 @@
 import { List } from "antd";
 import VirtualList from "rc-virtual-list";
-import "./HistorySessionList.css";
-import ListItem from "./HistoryListItem";
+import SessionListItem from "./SessionListItem";
 
 import { FormattedSession } from "./History";
 export interface SessionsListProps {
@@ -9,7 +8,7 @@ export interface SessionsListProps {
   removeSession: (sessionId: string) => void;
 }
 
-function HistorySessionsList({ sessions, removeSession }: SessionsListProps) {
+function SessionsList({ sessions, removeSession }: SessionsListProps) {
   //TODO Adjust height to screen size
   const ContainerHeight = 300;
   //Todo removed session animation
@@ -27,7 +26,10 @@ function HistorySessionsList({ sessions, removeSession }: SessionsListProps) {
           <List.Item key={index}>
             <List.Item.Meta
               description={
-                <ListItem session={sessionList} removeSession={removeSession} />
+                <SessionListItem
+                  session={sessionList}
+                  removeSession={removeSession}
+                />
               }
             />
           </List.Item>
@@ -37,7 +39,7 @@ function HistorySessionsList({ sessions, removeSession }: SessionsListProps) {
   );
 }
 
-export default HistorySessionsList;
+export default SessionsList;
 
 // function formatSessions(sessions: Session[]): FormattedSession[] {
 //   const formattedSessions: FormattedSession[] = [];

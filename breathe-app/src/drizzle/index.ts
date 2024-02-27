@@ -106,3 +106,34 @@ export const insertMeditation = async (meditation: schema.Meditation) => {
     console.error("drizzle.insertMeditation.e: ", error);
   }
 };
+
+export const readMeditations = async (userId: string) => {
+  try {
+    const readMeditations = async (userId: string) => {
+      return db.query.meditations.findMany({
+        where: eq(schema.meditations.userId, userId),
+        orderBy: [desc(schema.meditations.timestamp)],
+      });
+    };
+    const res = await readMeditations(userId);
+    return res;
+  } catch (e) {
+    console.error("drizzle.index.readMeditations.e: ", e);
+  }
+};
+
+export const deleteMeditation = async (meditationId: string) => {
+  try {
+    const deleteMeditation = async (meditationId: string) => {
+      return db
+        .delete(schema.meditations)
+        .where(eq(schema.meditations.id, meditationId));
+    };
+    const res = await deleteMeditation(meditationId);
+    if (res.rowsAffected !== 1) {
+      throw Error(`drizzle.deleteMeditation.res: ${JSON.stringify(res)}`);
+    }
+  } catch (error) {
+    console.error("drizzle.deleteMeditation.e: ", error);
+  }
+};

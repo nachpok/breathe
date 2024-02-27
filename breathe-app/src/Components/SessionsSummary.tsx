@@ -1,5 +1,5 @@
 import { FormattedSession } from "./History";
-import "./StatsSummary.css";
+import "./Summary.css";
 export interface StatsSummaryProps {
   sessions: FormattedSession[];
 }
@@ -13,13 +13,11 @@ interface SessionsSummary {
 }
 //TODO avoid / by 0, show no stats
 //TODO recalculate summary when session is deleted
-function StatsSummary({ sessions }: StatsSummaryProps) {
-  const numOfSessions = sessions.length;
-  if (numOfSessions === 0) {
-    return <>NO SESSIONS</>;
+function SessionsSummary({ sessions }: StatsSummaryProps) {
+  if (!sessions.length) {
+    return <h1>YOU HAVE NO SESSIONS</h1>;
   }
-
-  const summary = extractStatistics(sessions);
+  const summary = extractSessionsStatistics(sessions);
 
   return (
     <div className="summary-container">
@@ -68,9 +66,11 @@ function StatsSummary({ sessions }: StatsSummaryProps) {
   );
 }
 
-export default StatsSummary;
+export default SessionsSummary;
 
-function extractStatistics(sessions: FormattedSession[]): SessionsSummary {
+function extractSessionsStatistics(
+  sessions: FormattedSession[]
+): SessionsSummary {
   const numOfSessions = sessions.length;
   let roundsString: string[] = [];
   sessions.forEach((s) => {
