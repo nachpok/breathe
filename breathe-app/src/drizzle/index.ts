@@ -8,18 +8,6 @@ const client = createClient({
   authToken: import.meta.env.VITE_DATABASE_AUTH_TOKEN,
 });
 const db = drizzle(client, { schema });
-export const addMockSession = async () => {
-  try {
-    await db.insert(schema.sessions).values({
-      id: "BS-c45482d0-99f9-4ae3-821c-32c7876bbb49",
-      userId: "BU-uQgkMd8Q6yRWWEk1zgwCDk9uNcm1",
-      timestamp: "1707653374244",
-      rounds: [75000, 90000, 100000],
-    });
-  } catch (error) {
-    console.error("error: ", error);
-  }
-};
 
 type NewUser = typeof schema.users.$inferInsert;
 type NewSession = typeof schema.sessions.$inferInsert;
