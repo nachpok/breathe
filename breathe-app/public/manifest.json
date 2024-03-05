@@ -1,13 +1,17 @@
 {
-    "short_name": "B",
     "name": "Breathe",
+    "short_name": "B",
+    "theme_color": "#000000",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "start_url": "/index.html",
+    "scope": "/",
     "icons": [
       {
         "src": "public/B.ico",
         "sizes": "16x16",
         "type": "image/ico"
       },
-      
       {
         "src": "public/B-144x144.png",
         "sizes": "144x144",
@@ -25,10 +29,5 @@
         "sizes": "512x512",
         "type": "image/png"
       }
-    ],
-    "start_url": "/index.html",
-    "background_color": "#FFFFFF",
-    "display": "standalone",
-    "scope": "/",
-    "theme_color": "#000000"
+    ]
   }

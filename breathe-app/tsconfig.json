@@ -20,6 +20,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/drizzle/schema.ts","node_modules/@libsql/client"],
+  "include": [
+    "src",
+    "src/drizzle/schema.ts",
+    "node_modules/@libsql/client",
+    "vite.config.ts"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
