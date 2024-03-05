@@ -1,0 +1,34 @@
+{
+    "short_name": "B",
+    "name": "Breathe",
+    "icons": [
+      {
+        "src": "public/B.ico",
+        "sizes": "16x16",
+        "type": "image/ico"
+      },
+      
+      {
+        "src": "public/B-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png",
+        "purpose": "any"
+      },
+      {
+        "src": "public/B-144x144.png",
+        "sizes": "144x144",
+        "type": "image/png",
+        "purpose": "maskable"
+      },
+      {
+        "src": "public/B-512x512.png",
+        "sizes": "512x512",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/index.html",
+    "background_color": "#FFFFFF",
+    "display": "standalone",
+    "scope": "/",
+    "theme_color": "#000000"
+  }
