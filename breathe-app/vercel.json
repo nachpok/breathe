@@ -1,16 +1,14 @@
 {
   "rewrites": [
-  
     { "source": "/(.*)", "destination": "/index.html" }
   ],
-  "routes": [
+  "headers": [
     {
-      "src": "/manifest.json",
-      "status": 200,
-      "headers": {
-        "Cache-Control": "max-age=0",
-        "Access-Control-Allow-Origin": "*"
-      }
+      "source": "/manifest.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "max-age=0" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
     }
   ]
 }
