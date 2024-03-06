@@ -5,10 +5,11 @@ import react from "@vitejs/plugin-react";
 const manifestForPlugin: Partial<VitePWAOptions> = {
   registerType: "prompt",
   includeAssets: [
-    "favicon.ico",
+    "B.ico",
     "robots.txt",
     "B-144x144.png",
     "B-512x512.png",
+    "manifest.json",
   ],
   manifest: {
     name: "Breathe",
