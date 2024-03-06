@@ -20,7 +20,7 @@ const HomePage: React.FC = () => {
         justifyContent: "center",
       }}
     >
-      <h3>Welcome {currentUser.email.split("@")[0]}</h3>
+      <h4>Welcome {currentUser.email.split("@")[0]}</h4>
       <div className="menu-button-container">
         <ButtonLink
           className="menu-button"
