@@ -1,14 +1,6 @@
 {
   "rewrites": [
+    { "source": "/manifest.json", "destination": "/manifest.json" },
     { "source": "/(.*)", "destination": "/index.html" }
-  ],
-  "headers": [
-    {
-      "source": "/manifest.json",
-      "headers": [
-        { "key": "Cache-Control", "value": "max-age=0" },
-        { "key": "Access-Control-Allow-Origin", "value": "*" }
-      ]
-    }
   ]
 }
