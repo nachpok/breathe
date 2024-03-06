@@ -1,6 +1,16 @@
 {
   "rewrites": [
-    { "source": "/manifest.json", "destination": "/manifest.json" },
+  
     { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "routes": [
+    {
+      "src": "/manifest.json",
+      "status": 200,
+      "headers": {
+        "Cache-Control": "max-age=0",
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
   ]
 }
