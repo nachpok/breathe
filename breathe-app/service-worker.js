@@ -2,13 +2,7 @@
 self.addEventListener("install", function (e) {
   e.waitUntil(
     caches.open("breathe").then(function (cache) {
-      return cache.addAll([
-        "/",
-        "/index.html",
-        "/src/Components/Timer.css",
-        "/scripts/app.js",
-        // Add other resources you want cached
-      ]);
+      return cache.addAll(["/", "/index.html", "/manifest.json"]);
     })
   );
 });
