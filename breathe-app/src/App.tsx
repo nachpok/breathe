@@ -23,7 +23,8 @@ function App() {
   if (!firebase) {
     return <div>Loading...</div>;
   }
-
+  const manifest = "./manifest.json";
+  console.log("manifest: ", manifest);
   return (
     <BrowserRouter>
       <AuthProvider firebase={firebase}>
