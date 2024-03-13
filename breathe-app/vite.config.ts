@@ -4,20 +4,14 @@ import react from "@vitejs/plugin-react";
 
 const manifestForPlugin: Partial<VitePWAOptions> = {
   registerType: "prompt",
-  includeAssets: [
-    "B.ico",
-    "robots.txt",
-    "B-144x144.png",
-    "B-512x512.png",
-    "manifest.json",
-  ],
+  includeAssets: ["B.ico", "robots.txt", "B-144x144.png", "B-512x512.png"],
   manifest: {
     name: "Breathe",
     short_name: "B",
     theme_color: "#000000",
     background_color: "#FFFFFF",
     display: "standalone",
-    start_url: "/index.html",
+    start_url: "/",
     scope: "/",
     icons: [
       {
