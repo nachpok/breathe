@@ -3,7 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon"  href="/B.ico" />
+    <link rel="manifest" href="/manifest.json">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#123456">
+   <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+            // Registration was successful
+            console.log('ServiceWorker registration successful with scope: ', registration.scope);
+          }, function(err) {
+            // registration failed :(
+            console.log('ServiceWorker registration failed: ', err);
+          }).catch(function(err) {
+            console.log(err)
+          });
+        });
+      } else {
+        console.log('service worker is not supported');
+      }
+    </script>
     <title>Breathe</title>
   </head>
   <body>
